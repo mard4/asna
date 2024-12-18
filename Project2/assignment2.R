@@ -1,18 +1,4 @@
-# installed_packages <- installed.packages()
-# # Get a list of all installed package names
-# packages_to_remove <- rownames(installed_packages)
-# 
-# # Remove all packages
-# for (pkg in packages_to_remove) {
-#   remove.packages(pkg)
-# }
-# installed.packages()  # Should return an empty result or only base packages
-
-
-##################### mardeen above #####################
-
-setwd("C:/Users/Mardeen/Desktop/University/AdvancedSN/Project2/")
-
+setwd()
 
 ### ================== Read dataset ================== ###
 if (!requireNamespace("readxl", quietly = TRUE)) {
@@ -33,7 +19,6 @@ if (!requireNamespace("ergm", quietly = TRUE)) {
 }
 library(ergm)
 
-
 ## mail ok 
 par(mar=c(1,1,1,1))
 par(mfrow=c(1,1))
@@ -51,8 +36,7 @@ EIES_Model1<-ergm(EIES_T2F_n ~ edges+mutual
                   +dgwesp(type="ITP", decay=.5, fixed=TRUE),
                   control=control.ergm(seed=102, MCMC.runtime.traceplot=TRUE), 
                   verbose=TRUE)
-
-set.vertex.attribute(EIES_T2F_n, "gender", attributes$Gender)
+set.vertex.attribute(EIES_T2F_n, "Gender", attributes$Gender)
 EIES_Model2<-ergm(EIES_T2F_n ~ edges+mutual
                   +nodeicov("Gender")+nodeocov("Gender")+nodematch("Gender"), 
                   control=control.ergm(seed=102, MCMC.runtime.traceplot=TRUE), 
