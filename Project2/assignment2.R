@@ -49,6 +49,30 @@ EIES_Model3<-ergm(EIES_T2F_n ~ edges+mutual
                   control=control.ergm(seed=102, MCMC.runtime.traceplot=TRUE), 
                   verbose=TRUE)
 
+
+# edges: baseline density of edges in the network. It models the probability of any tie 
+# existing, controlling for other terms
+# mutual: models reciprocity in the network (accounts for the likelihood of ties being bidirectional)
+# gwidegree (geometrically weighted):Models the distribution of in-degrees
+# gwodegree (geometrically weighted): Models the distribution of out-degrees
+## decay=.3: how much higher-order degrees are weighted
+## fixed=TRUE: Indicates the decay parameter is fixed and not estimated during model fitting.
+# dgwesp: Models shared partner effects, representing how ties are more likely when two nodes 
+#         share many partners.
+## type="OTP": Outgoing two-paths, capturing shared partnerships formed through outgoing ties
+## type="ITP": Incoming two-paths, capturing shared partnerships formed through incoming ties.
+## decay=.5: Specifies the decay parameter for weighting higher-order shared partner configurations
+## fixed=TRUE: Indicates the decay parameter is not estimated but held constant.
+# control.ergm(seed=102, MCMC.runtime.traceplot=TRUE)
+## Sets a seed for reproducibility of results.
+## Produces trace plots to visualize Markov Chain Monte Carlo (MCMC) diagnostics during estimation.
+# influence of node-level attributes on the network's structure
+## nodeicov("Gender"): relationship between a node's in-degree and its value for the attribute "Gender"
+##                     Captures whether nodes with certain values for "Gender" tend to receive more ties in the network.
+## nodeocov("Gender"): relationship between a node's out-degree and its value for the attribute "Gender"
+##                     Captures whether nodes with certain values for "Gender" tend to send more ties in the network.         
+## nodematch("Gender"): tendency of nodes to form ties with others that have the same value for the attribute
+##                      Measures homophily, the tendency for similar nodes (same gender) to connec
 # Present the results in a table
 
 
