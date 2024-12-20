@@ -10,7 +10,6 @@ network_info <- Borgatti_Scientists504[["NetworkInfo"]]
 #the attribute file
 attributes <- Borgatti_Scientists504[["Attributes"]]  
 
-
 ################################################################
 
 collaboration <- Borgatti_Scientists504$Collaboration
@@ -178,8 +177,8 @@ cat("Observed correlation (DeptGroup vs. Betweenness):", observed_correlation_de
 cat("P-value from permutation test:", p_value_dept_betw, "\n")
 
 hist(permuted_correlations_dept_betw, 
-     main = "Permutation Test for Correlation (DeptGroup vs. Betweenness)",
-     xlab = "Correlation", col = "lightblue", border = "white")
+     main = "Permutation Test for Correlation (DeptGroup - Betweenness)",
+     xlab = "Correlation", col = "lightblue", border = "white", xlim = c(-0.15,0.15))
 abline(v = observed_correlation_dept_betw, col = "red", lwd = 2)
 legend("topright", legend = "Observed Correlation", col = "red", lwd = 2, cex = 0.8, pt.cex = 0.2, bty = "n")
 
@@ -204,8 +203,8 @@ cat("Observed correlation (DeptGroup vs. BetaCentrality):", observed_correlation
 cat("P-value from permutation test:", p_value_dept_beta, "\n")
 
 hist(permuted_correlations_dept_beta, 
-     main = "Permutation Test for Correlation (DeptGroup vs. BetaCentrality)",
-     xlab = "Correlation", col = "lightblue", border = "white")
+     main = "Permutation Test for Correlation (DeptGroup - BetaCentrality)",
+     xlab = "Correlation", col = "lightblue", border = "white", xlim = c(-0.15,0.15))
 abline(v = observed_correlation_dept_beta, col = "red", lwd = 2)
 legend("topleft", legend = "Observed Correlation", col = "red", lwd = 2, cex = 0.8, pt.cex = 0.2, bty = "n")
 
