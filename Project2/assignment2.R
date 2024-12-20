@@ -189,15 +189,15 @@ gw_odegree_skewness <- skewness(EIES_Model3sim2000$sim.model[,4])
 ### which might signal that the model terms do not fully capture the underlying structural processes of the observed network 
 
 # Trace plots
-plot(EIES_Model1sim2000$sim.model[,1], type="l", main="Edges trace plot", ylab="", xlab="")
-plot(EIES_Model1sim2000$sim.model[,2], type="l", main="Mutual trace plot", ylab="", xlab="")
-plot(EIES_Model1sim2000$sim.model[,3], type="l", main="gw-indegree trace plot", ylab="", xlab="")
-plot(EIES_Model1sim2000$sim.model[,4], type="l", main="gw-odegree trace plot", ylab="", xlab="")
-plot(EIES_Model1sim2000$sim.model[,5], type="l", main="Shared partner effects trace plot (outgoing, gwesp.OTP)", ylab="", xlab="")
-plot(EIES_Model1sim2000$sim.model[,6], type="l", main="Shared partner effects trace plot (incoming, gwesp.ITP)", ylab="", xlab="")
-plot(EIES_Model1sim2000$sim.model[,7], type="l", main="Gender-indegree (nodeicov) trace plot", ylab="", xlab="")
-plot(EIES_Model1sim2000$sim.model[,8], type="l", main="Gender-outdegree (nodeocov) trace plot", ylab="", xlab="")
-plot(EIES_Model1sim2000$sim.model[,9], type="l", main="Homophily trace plot (nodematch)", ylab="", xlab="")
+plot(EIES_Model3sim2000$sim.model[,1], type="l", main="Edges trace plot", ylab="", xlab="")
+plot(EIES_Model3sim2000$sim.model[,2], type="l", main="Mutual trace plot", ylab="", xlab="")
+plot(EIES_Model3sim2000$sim.model[,3], type="l", main="gw-indegree trace plot", ylab="", xlab="")
+plot(EIES_Model3sim2000$sim.model[,4], type="l", main="gw-odegree trace plot", ylab="", xlab="")
+plot(EIES_Model3sim2000$sim.model[,5], type="l", main="Shared partner effects trace plot (outgoing, gwesp.OTP)", ylab="", xlab="")
+plot(EIES_Model3sim2000$sim.model[,6], type="l", main="Shared partner effects trace plot (incoming, gwesp.ITP)", ylab="", xlab="")
+plot(EIES_Model3sim2000$sim.model[,7], type="l", main="Gender-indegree (nodeicov) trace plot", ylab="", xlab="")
+plot(EIES_Model3sim2000$sim.model[,8], type="l", main="Gender-outdegree (nodeocov) trace plot", ylab="", xlab="")
+plot(EIES_Model3sim2000$sim.model[,9], type="l", main="Homophily trace plot (nodematch)", ylab="", xlab="")
 
 ## trace plot is a line chart that has:     
 ### time on the x-axis (draw)
@@ -249,16 +249,16 @@ boxplot(EIES_Model3sim2000$sim.odeg[,1:11])  # WARNING adjust 1 to 11 if needed
 # the number associated to each triad if the frequency 
 
 # The histogram 
-EIES_Model1sim2000$obs.odeg
+EIES_Model3sim2000$obs.odeg
 par(mfrow=c(4,4))
 for (k in 1:16) {
   # Create the histogram with x-axis label suppressed
-  hist(EIES_Model1sim2000$sim.triadcensus[,k], 
-       main=colnames(EIES_Model1sim2000$sim.triadcensus)[k],
+  hist(EIES_Model3sim2000$sim.triadcensus[,k], 
+       main=colnames(EIES_Model3sim2000$sim.triadcensus)[k],
        xlab=NA, ylab=NA)  # Suppress both x and y axis labels
   
   # Add the observed value line (blue dashed)
-  abline(v = EIES_Model1sim2000$obs.triadcensus[k], col = "blue", lwd = 3, lty = 2)
+  abline(v = EIES_Model3sim2000$obs.triadcensus[k], col = "blue", lwd = 3, lty = 2)
   
   if (k == 1){
     legend("topleft", legend=c("Observed Value"), col=c("blue"), 
@@ -270,7 +270,7 @@ for (k in 1:16) {
     mtext("Frequency", side = 2, line = 2, cex = 0.8)  # Add y-axis label on 1st, 5th, 9th, and 13th plots
   }
 }
-EIES_Model1sim2000$obs.triadcensus 
+EIES_Model3sim2000$obs.triadcensus 
 
 ## If the blue dashed line is close to the peak of the histogram, it indicates that the observed network's triad count is similar to what is 
 ## expected in the simulation (i.e., the simulated network matches the observed network in terms of that triad type)
